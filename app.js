@@ -6,8 +6,6 @@ var session = require('express-session');
 var app = express();
 var exphbs  = require('express-handlebars');
 
-//exphbs.registerPartials(__dirname + '/views/partials');
-
 // configure app
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');

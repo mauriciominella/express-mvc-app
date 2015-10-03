@@ -1,6 +1,7 @@
 var express = require('express')
   , router = express.Router()
   , auth = require('../middlewares/auth')
+  , user = require('../models/user');
   /*, Comment = require('../models/comment')*/
 
 var context = {
@@ -22,8 +23,11 @@ router.post('/', function(req, res){
    var email = req.body.email;
    var password = req.body.password;
    
-   console.log('email ' + email);
-   console.log('password ' + password);
+   user.authenticate(email, password, function(){
+     req.session.user = user;
+   });
+     
+   res.redirect('/index');
 });
 
 module.exports = router

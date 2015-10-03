@@ -7,25 +7,25 @@ var hash = function(password) {
   return crypto.createHash('sha1').update(password).digest('base64')
 }
 
-exports.create = function(name, email, password, cb) {
+exports.create = function(name, email, password, callback) {
   var user = {
     name: name,
     email: email,
     password: hash(password),
   }
 
-  db.save(user, cb)
+  //db.save(user, cb)
 }
 
-exports.get = function(id, cb) {
-  db.fetch({id:id}, function(err, docs) {
+exports.get = function(id, callback) {
+  /*db.fetch({id:id}, function(err, docs) {
     if (err) return cb(err)
     cb(null, docs[0])
-  })
+  })*/
 }
 
-exports.authenticate = function(email, password) {
-  db.fetch({email:email}, function(err, docs) {
+exports.authenticate = function(email, password, callback) {
+ /* db.fetch({email:email}, function(err, docs) {
     if (err) return cb(err)
     if (docs.length === 0) return cb()
 
@@ -36,12 +36,15 @@ exports.authenticate = function(email, password) {
     } else {
       cb()
     }
-  })
+  })*/
+  
+  callback();
+  
 }
 
-exports.changePassword = function(id, password, cb) {
-  db.update({id:id}, {password: hash(password)}, function(err, affected) {
+exports.changePassword = function(id, password, callback) {
+  /*db.update({id:id}, {password: hash(password)}, function(err, affected) {
     if (err) return cb(err)
     cb(null, affected > 0)
-  })
+  })*/
 }
