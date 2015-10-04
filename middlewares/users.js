@@ -13,7 +13,6 @@ module.exports = function(req, res, next) {
       next()
     })
   } else {
-    console.log('user is not autenticated');
     next()
   }
 }

@@ -18,10 +18,18 @@ exports.create = function(name, email, password, callback) {
 }
 
 exports.get = function(id, callback) {
+  
+    var user = {
+    name: 'mminella',
+    email: 'mauriciominella@gmail.com',
+    password: hash('3006'),
+  }
+
   /*db.fetch({id:id}, function(err, docs) {
     if (err) return cb(err)
     cb(null, docs[0])
   })*/
+  callback(null, user);
 }
 
 exports.authenticate = function(email, password, callback) {

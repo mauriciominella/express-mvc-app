@@ -5,13 +5,13 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <form action="/login" method="post">
+        
           <div class="form-group has-feedback">
-            <input type="email" name="email" class="form-control" placeholder="Email">
+            <input type="email" id="email" class="form-control" placeholder="Email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" name="password" class="form-control" placeholder="Password">
+            <input type="password" id="password" class="form-control" placeholder="Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -23,10 +23,10 @@
               </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+              <button type="submit" id="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
             </div><!-- /.col -->
           </div>
-        </form>
+        
 
         <div class="social-auth-links text-center">
           <p>- OR -</p>
@@ -39,3 +39,38 @@
 
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
+    
+
+    <!-- jQuery 2.1.4 -->
+    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- iCheck -->
+    <script src="plugins/iCheck/icheck.min.js"></script>
+    <script>
+      $(function () {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '20%' // optional
+        });
+      });
+    </script>
+
+    <script type="text/javascript">
+      $(function(){
+        var user,pass;
+        $("#submit").click(function(){
+          user=$("#email").val();
+          pass=$("#password").val();
+          $.post("/login",{email: user,password: pass}, function(data){
+            if(data=='yes')
+              {
+                var destinationUrl = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '') + '/';
+                // similar behavior as clicking on a link
+                window.location.href = destinationUrl;
+              }
+          });
+        });
+      })
+    </script>

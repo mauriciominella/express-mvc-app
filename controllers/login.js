@@ -24,10 +24,12 @@ router.post('/', function(req, res){
    var password = req.body.password;
    
    user.authenticate(email, password, function(){
+     console.log('foiiii')
+     console.log(user);
      req.session.user = user;
+     res.end('yes');
    });
-     
-   res.redirect('/index');
+   
 });
 
 module.exports = router
