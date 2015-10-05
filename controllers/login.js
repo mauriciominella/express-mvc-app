@@ -18,6 +18,11 @@ router.get('/', function(req, res) {
   res.render('login', context);
 })
 
+router.post('/signOut', function(req, res){
+      req.session.user = null;
+    res.redirect('/login');
+});
+
 router.post('/', function(req, res){
 	
    var email = req.body.email;
