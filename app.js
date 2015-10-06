@@ -12,7 +12,8 @@ app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
 // use middleware
-app.use(express.static(path.join(__dirname, 'bower_components/AdminLTE')));
+//app.use(express.static(path.join(__dirname, 'bower_components/AdminLTE')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser());
 app.use(session({secret: 'ssshhhhh'}));
