@@ -1,0 +1,24 @@
+{
+  "name": "express-mvc-app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mauriciominella/express-mvc-app",
+  "authors": [
+    "mauricio.minella@bravi.com.br <mauricio.minella@bravi.com.br>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "AdminLTE": "adminlte#~2.3.0",
+    "bootstrap-material-design": "~0.3.0"
+  }
+}

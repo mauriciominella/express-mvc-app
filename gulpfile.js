@@ -3,11 +3,11 @@ var gulp = require('gulp')
   , nodemon = require('gulp-nodemon')
   , gulpBowerFiles = require('gulp-bower-files');
 
-gulp.task('dev', function () {
+gulp.task('monitor-changes', function () {
   nodemon({ script: 'app.js'
           , ext: 'html js'
-          , ignore: ['ignored.js']
-          //, tasks: ['bower-files']
+          , ignore: ['bower_components/.*', 'public/.*']
+          , tasks: ['bower-files']
         })
     .on('restart', function () {
       console.log('restarted!')
@@ -16,6 +16,8 @@ gulp.task('dev', function () {
 
 
  gulp.task('bower-files', function(){
-   //gulpBowerFiles().pipe(gulp.dest('./public'));
-   //console.log('public files generated!');
+   gulpBowerFiles().pipe(gulp.dest('./public'));
+   console.log('public files generated!');
  });
+
+gulp.task('dev', ['monitor-changes']);
