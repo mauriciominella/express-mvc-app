@@ -19,8 +19,8 @@ router.get('/', function(req, res) {
 })
 
 router.post('/signOut', function(req, res){
-      req.session.user = null;
-    res.redirect('/login');
+    req.session.user = null;
+    res.end('yes');
 });
 
 router.post('/', function(req, res){

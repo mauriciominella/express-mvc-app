@@ -12,11 +12,11 @@ $(function () {
   //-----------------------
 
   // Get context with jQuery - using jQuery's .get() method.
-  var salesChartCanvas = $("#salesChart").get(0).getContext("2d");
+// var salesChartCanvas = $("#salesChart").get(0).getContext("2d");
   // This will get the first returned node in the jQuery collection.
-  var salesChart = new Chart(salesChartCanvas);
+ // var salesChart = new Chat(salesChartCanvas);
 
-  var salesChartData = {
+  /*var salesChartData = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
       {
@@ -40,9 +40,9 @@ $(function () {
         data: [28, 48, 40, 19, 86, 27, 90]
       }
     ]
-  };
+  };*/
 
-  var salesChartOptions = {
+  /*var salesChartOptions = {
     //Boolean - If we should show the scale at all
     showScale: true,
     //Boolean - Whether grid lines are shown across the chart
@@ -79,10 +79,10 @@ $(function () {
     maintainAspectRatio: true,
     //Boolean - whether to make the chart responsive to window resizing
     responsive: true
-  };
+  };*/
 
   //Create the line chart
-  salesChart.Line(salesChartData, salesChartOptions);
+ // salesChart.Line(salesChartData, salesChartOptions);
 
   //---------------------------
   //- END MONTHLY SALES CHART -
@@ -92,7 +92,7 @@ $(function () {
   //- PIE CHART -
   //-------------
   // Get context with jQuery - using jQuery's .get() method.
-  var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+  /*var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
   var pieChart = new Chart(pieChartCanvas);
   var PieData = [
     {
@@ -131,8 +131,8 @@ $(function () {
       highlight: "#d2d6de",
       label: "Navigator"
     }
-  ];
-  var pieOptions = {
+  ];*/
+  /*var pieOptions = {
     //Boolean - Whether we should show a stroke on each segment
     segmentShowStroke: true,
     //String - The colour of each segment stroke
@@ -157,10 +157,10 @@ $(function () {
     legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>",
     //String - A tooltip template
     tooltipTemplate: "<%=value %> <%=label%> users"
-  };
+  };*/
   //Create pie or douhnut chart
   // You can switch between pie and douhnut using the method below.
-  pieChart.Doughnut(PieData, pieOptions);
+ /* pieChart.Doughnut(PieData, pieOptions);*/
   //-----------------
   //- END PIE CHART -
   //-----------------
@@ -169,7 +169,7 @@ $(function () {
    * ------------
    * Create a world map with markers
    */
-  $('#world-map-markers').vectorMap({
+ /* $('#world-map-markers').vectorMap({
     map: 'world_mill_en',
     normalizeFunction: 'polynomial',
     hoverOpacity: 0.7,
@@ -227,7 +227,7 @@ $(function () {
       {latLng: [26.02, 50.55], name: 'Bahrain'},
       {latLng: [0.33, 6.73], name: 'São Tomé and Príncipe'}
     ]
-  });
+  });*/
 
   /* SPARKLINE CHARTS
    * ----------------
