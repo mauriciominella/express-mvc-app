@@ -12,9 +12,6 @@ var context = {
 }
 
 router.get('/', function(req, res) {
- /* Comment.get(req.params.id, function (err, comment) {
-    res.render('comments/comment', {comment: comment})
-  })*/
   res.render('login', context);
 })
 
