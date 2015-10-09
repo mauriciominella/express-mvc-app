@@ -11,11 +11,18 @@ var app = express();
 var exphbs  = require('express-handlebars');
 
 // configure app
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+var hbs = require('./views/setup/handlebarsSetup.js')(exphbs);
+
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
 var configDB = require('./config/database.js');
+
+
+
+
+require('./config/passport')(passport);
 
 // configuration
 mongoose.connect(configDB.url);
@@ -32,9 +39,9 @@ app.use(passport.initialize());
 app.use(passport.session());  // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session 
 
-app.use(require('./middlewares/users'))
-app.use(require('./middlewares/auth'))
-app.use(require('./controllers'))
+//app.use(require('./middlewares/users'))
+//app.use(require('./middlewares/auth'))
+//app.use(require('./controllers'))
 
 // routes ======================================================================
 require('./controllers/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
