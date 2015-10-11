@@ -11,7 +11,7 @@ var app = express();
 var exphbs  = require('express-handlebars');
 
 // configure app
-var hbs = require('./views/setup/handlebarsSetup.js')(exphbs);
+var hbs = require('./config/handlebars.js')(exphbs);
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
