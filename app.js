@@ -20,9 +20,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 var configDB = require('./config/database.js');
 
-
-
-
 require('./config/passport')(passport);
 
 // configuration
@@ -44,7 +41,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 //app.use(require('./middlewares/auth'))
 //app.use(require('./controllers'))
 
-// routes
+// loading all routes which are places on controllers folder
 processRoutePath(__dirname + "/controllers");
 
 function processRoutePath(route_path) {

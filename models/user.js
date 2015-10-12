@@ -1,4 +1,4 @@
-// app/models/user.js
+// models/user.js
 // load the things we need
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
@@ -63,7 +63,7 @@ exports.create = function(name, email, password, callback) {
 }
 */
 /*exports.get = function(id, callback) {
-  
+
     var user = {
     name: 'mminella',
     email: 'mauriciominella@gmail.com',
@@ -90,9 +90,9 @@ exports.create = function(name, email, password, callback) {
       cb()
     }
   })*/
-  
+
   //callback();
-  
+
 //}
 
 //exports.changePassword = function(id, password, callback) {
