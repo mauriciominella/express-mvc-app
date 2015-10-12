@@ -9,6 +9,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var app = express();
 var exphbs  = require('express-handlebars');
+var fs=require("fs");
 
 // configure app
 var hbs = require('./config/handlebars.js')(exphbs);
@@ -37,14 +38,31 @@ app.use(cookieParser());
 app.use(session({secret: 'ssshhhhh'})); // session secret
 app.use(passport.initialize());
 app.use(passport.session());  // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session 
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 //app.use(require('./middlewares/users'))
 //app.use(require('./middlewares/auth'))
 //app.use(require('./controllers'))
 
+// routes
+processRoutePath(__dirname + "/controllers");
+
+function processRoutePath(route_path) {
+    fs.readdirSync(route_path).forEach(function(file) {
+        var filepath = route_path + '/' + file;
+        fs.stat(filepath, function(err,stat) {
+            if (stat.isDirectory()) {
+                processRoutePath(filepath);
+            } else {
+                console.info('Loading route: ' + filepath);
+                require(filepath)(app, passport);
+            }
+        });
+    });
+}
+
 // routes ======================================================================
-require('./controllers/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+//require('./controllers/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 // start the server
 var port = process.env.PORT || 8080;
